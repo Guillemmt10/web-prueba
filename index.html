@@ -603,6 +603,330 @@
       margin-bottom: 4px;
     }
 
+
+    [hidden] { display: none !important; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .sec-head { text-align: center; max-width: 760px; margin: 0 auto 80px; }
+    .sec-head .lead {
+      font-size: clamp(19px, 2.1vw, 23px);
+      font-weight: 300;
+      color: #444;
+      margin-top: 26px;
+    }
+
+    .btn--light { background: transparent; border-color: rgba(255, 255, 255, .5); color: var(--white); }
+    .btn--light:hover, .btn--light:focus-visible { border-color: var(--gold); }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    :focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+
+    /* Colores de la edición activa (los usan los calcetines SVG) */
+    :root {
+      --sk-base: #fbfaf7;
+      --sk-light: #ffffff;
+      --sk-dark: #e3ded5;
+      --sk-rib: #d6d0c5;
+      --sk-accent: #b08d57;
+    }
+    .sk-stop { transition: stop-color 1s var(--ease); }
+    .sk-fill { transition: fill 1s var(--ease), stroke 1s var(--ease); }
+
+    /* ---------- Colección ---------- */
+    .collection { border-top: 1px solid var(--line); }
+    .coll-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+    .coll-stage {
+      position: relative;
+      background: radial-gradient(ellipse at 50% 42%, var(--white) 0%, var(--ivory) 70%);
+      aspect-ratio: 4 / 5;
+      max-width: 100%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+    }
+    .coll-sock { width: 56%; animation: float 7s ease-in-out infinite; }
+    .coll-sock svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .coll-badge, .coll-stock {
+      position: absolute;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .coll-badge { top: 24px; left: 26px; }
+    .coll-stock { bottom: 24px; right: 26px; color: var(--gold); }
+
+    .coll-info { min-width: 0; }
+    .swap { transition: opacity .45s var(--ease), transform .45s var(--ease); }
+    .swap.out { opacity: 0; transform: translateY(8px); }
+    .coll-name { font-size: clamp(44px, 5.4vw, 68px); font-style: italic; margin: 12px 0 18px; }
+    .coll-desc { color: #444; font-weight: 300; font-size: 19px; max-width: 46ch; min-height: 3.4em; }
+    .coll-price { font-size: 40px; font-weight: 300; margin: 18px 0 34px; font-variant-numeric: lining-nums; }
+    .coll-price small {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-left: 10px;
+    }
+
+    .edition-list { display: grid; border-top: 1px solid var(--line); margin-bottom: 40px; }
+    .edition {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      padding: 16px 12px 16px 8px;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      transition: background .4s var(--ease), padding .4s var(--ease);
+    }
+    .edition::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform .5s var(--ease);
+    }
+    .edition:hover { background: var(--ivory); }
+    .edition[aria-checked="true"] { background: var(--ivory); padding-left: 18px; }
+    .edition[aria-checked="true"]::before { transform: scaleY(1); }
+    .edition .dot {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .14), 0 0 0 3px var(--white), 0 0 0 4px transparent;
+      transition: box-shadow .4s var(--ease);
+    }
+    .edition[aria-checked="true"] .dot { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .14), 0 0 0 3px var(--ivory), 0 0 0 4px var(--gold); }
+    .edition .n { font-size: 22px; line-height: 1.2; }
+    .edition .n small {
+      display: block;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 3px;
+    }
+    .edition .p { font-size: 19px; font-variant-numeric: lining-nums tabular-nums; }
+
+    /* ---------- Le geste ---------- */
+    .geste { background: #0f0e0d; color: var(--white); overflow: hidden; }
+    .geste-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .geste-text { min-width: 0; }
+    .geste-text h2 { margin: 18px 0 26px; }
+    .geste-text > p:not(.eyebrow) { color: #a9a39b; font-size: 20px; font-weight: 300; max-width: 44ch; }
+    .geste-steps { list-style: none; counter-reset: g; margin: 36px 0 44px; display: grid; gap: 14px; }
+    .geste-steps li {
+      counter-increment: g;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      font-size: 19px;
+      color: #ddd6cc;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #2a2724;
+    }
+    .geste-steps li::before { content: counter(g, upper-roman) "."; color: var(--gold); font-style: italic; }
+    .geste-art { min-width: 0; }
+    .geste-art svg { display: block; width: 100%; height: auto; max-height: 82vh; }
+
+    /* ---------- Probador ---------- */
+    .tryon { background: var(--ivory); }
+    .tryon-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(36px, 5vw, 80px);
+      align-items: start;
+    }
+    .tryon-stage { min-width: 0; }
+    .tryon-stage canvas {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      background: var(--white);
+      box-shadow: 0 30px 60px rgba(40, 30, 15, .1);
+      touch-action: none;
+      cursor: grab;
+    }
+    .tryon-stage canvas:active { cursor: grabbing; }
+    .tryon-panel { min-width: 0; display: grid; gap: 30px; }
+    .tryon-panel .hint { color: #555; font-weight: 300; font-size: 18px; }
+    .ctl-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .ctl-label output { color: var(--gold); letter-spacing: .1em; }
+    .mini-swatches { display: flex; flex-wrap: wrap; gap: 14px; }
+    .mini-swatches button {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 0;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15), 0 0 0 3px var(--ivory), 0 0 0 4px transparent;
+      transition: box-shadow .4s var(--ease), transform .4s var(--ease);
+    }
+    .mini-swatches button:hover { transform: translateY(-2px); }
+    .mini-swatches button[aria-checked="true"] { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15), 0 0 0 3px var(--ivory), 0 0 0 4px var(--gold); }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 24px;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: #cfc7b9; }
+    input[type="range"]::-moz-range-track { height: 1px; background: #cfc7b9; }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      margin-top: -8px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--gold);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--gold);
+    }
+    .file-btn { text-align: center; }
+    #tryon-file:focus-visible + .file-btn { outline: 1px solid var(--gold); outline-offset: 4px; }
+    .note-small { font-family: var(--sans); font-size: 11px; letter-spacing: .06em; color: var(--grey); line-height: 1.6; }
+
+    /* ---------- Ritual ---------- */
+    .ritual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      counter-reset: r;
+    }
+    .rite {
+      counter-increment: r;
+      padding: 48px 40px 44px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+    .rite::before {
+      content: "Étape " counter(r);
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .rite h3 { font-size: 30px; }
+    .rite p { color: #4a4a4a; font-weight: 300; font-size: 18px; }
+    .rite .dur { font-style: italic; color: var(--grey); font-size: 16px; }
+
+    /* ---------- Certificado ---------- */
+    .certificate { background: var(--ivory); }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: clamp(36px, 5vw, 72px);
+      align-items: center;
+    }
+    .cert-preview { min-width: 0; }
+    .cert-preview canvas {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 30px 60px rgba(40, 30, 15, .12);
+    }
+    .cert-form { min-width: 0; display: grid; gap: 8px; }
+    .cert-serial {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      margin: 6px 0 22px;
+    }
+    .cert-serial strong { display: block; font-family: var(--serif); font-size: 26px; letter-spacing: .06em; font-weight: 400; margin-top: 6px; }
+
+    /* ---------- Lista de espera ---------- */
+    .waitlist { border-top: 1px solid var(--line); }
+    .wait-wrap { max-width: 760px; margin: 0 auto; }
+    .wait-form { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 40px; }
+    .wait-form .full { grid-column: 1 / -1; }
+    .check {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 14px;
+      align-items: start;
+      font-size: 18px;
+      color: #444;
+      cursor: pointer;
+      margin: 10px 0 24px;
+    }
+    .check input {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px; height: 20px;
+      border: 1px solid #bdb5a6;
+      margin-top: 4px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .check input::after { content: ""; width: 10px; height: 10px; background: var(--gold); transform: scale(0); transition: transform .3s var(--ease); }
+    .check input:checked::after { transform: scale(1); }
+    .form-error { color: #8f3a2a; font-style: italic; font-size: 17px; min-height: 1.4em; }
+    .wait-ok {
+      text-align: center;
+      padding: 64px 32px;
+      border: 1px solid var(--line);
+      position: relative;
+    }
+    .wait-ok h3 { font-size: 40px; margin: 14px 0 6px; }
+    .wait-ok p:not(.eyebrow) { color: #444; font-weight: 300; font-size: 20px; max-width: 520px; margin: 0 auto; }
+    .wait-ok .pos { font-size: clamp(60px, 10vw, 96px); font-weight: 300; line-height: 1; margin: 28px 0 10px; font-variant-numeric: lining-nums; }
+    .wait-ok .btn { margin-top: 36px; }
+
     /* ---------- Animaciones de scroll ---------- */
     .reveal {
       opacity: 0;
@@ -619,7 +943,17 @@
     }
 
     /* ---------- Responsive ---------- */
+    @media (max-width: 1100px) {
+      .nav ul { gap: 26px; }
+    }
+
     @media (max-width: 980px) {
+      .nav ul { display: none; }
+      .coll-grid, .geste-grid, .tryon-grid, .cert-grid { grid-template-columns: 1fr; }
+      .coll-stage { max-width: 560px; width: 100%; margin: 0 auto; }
+      .geste-art { max-width: 560px; width: 100%; margin: 0 auto; }
+      .tryon-stage { max-width: 560px; width: 100%; margin: 0 auto; }
+      .ritual-grid { grid-template-columns: repeat(2, 1fr); }
       .feat-grid { grid-template-columns: repeat(2, 1fr); }
       .included { grid-template-columns: repeat(2, 1fr); }
       .t-grid { grid-template-columns: 1fr; gap: 80px; max-width: 560px; margin: 0 auto; }
@@ -643,6 +977,16 @@
       .press { gap: 18px 36px; font-size: 17px; margin-top: 90px; }
       .press span:nth-child(2n) { font-size: 20px; }
       .toast { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+      .sec-head { margin-bottom: 56px; }
+      .coll-stage { aspect-ratio: 1 / 1; }
+      .coll-sock { width: 46%; }
+      .edition { gap: 14px; }
+      .edition .n { font-size: 20px; }
+      .ritual-grid { grid-template-columns: 1fr; }
+      .rite { padding: 36px 24px; }
+      .wait-form { grid-template-columns: 1fr; }
+      .wait-ok { padding: 48px 20px; }
+      .btn-row .btn { flex: 1 1 100%; text-align: center; }
       footer .container { flex-direction: column; text-align: center; }
     }
 
@@ -720,9 +1064,10 @@
       <a href="#top" class="logo">Vauclair<small>Paris · Depuis 1887</small></a>
       <ul>
         <li><a href="#historia">La Maison</a></li>
-        <li><a href="#detalles">El detalle</a></li>
-        <li><a href="#precio">Adquisición</a></li>
-        <li><a href="#voces">Testimonios</a></li>
+        <li><a href="#coleccion">Colección</a></li>
+        <li><a href="#probador">Probador</a></li>
+        <li><a href="#ritual">Ritual</a></li>
+        <li><a href="#espera">Lista de espera</a></li>
       </ul>
       <button class="btn btn--ghost" data-open-modal>Acceso</button>
     </div>
@@ -804,6 +1149,34 @@
     </div>
   </section>
 
+  <!-- Colección -->
+  <section class="collection" id="coleccion">
+    <div class="container">
+      <div class="sec-head reveal">
+        <p class="eyebrow">La collection</p>
+        <div class="divider"></div>
+        <h2>Cinco ediciones.<br /><em>Un solo calcetín.</em></h2>
+        <p class="lead">El mismo Le Blanc N°1, interpretado en cinco estados de ánimo. Cada edición se teje por separado y no se dirige la palabra con las demás.</p>
+      </div>
+
+      <div class="coll-grid">
+        <div class="coll-stage reveal">
+          <span class="coll-badge swap" id="coll-code">Édition BL</span>
+          <div class="coll-sock" id="coll-sock"></div>
+          <span class="coll-stock swap" id="coll-stock">Quedan 7 piezas</span>
+        </div>
+        <div class="coll-info reveal" style="--d:.15s">
+          <p class="eyebrow swap" id="coll-sub">El origen</p>
+          <h3 class="coll-name swap" id="coll-name">Blanc Original</h3>
+          <p class="coll-desc swap" id="coll-desc"></p>
+          <div class="coll-price swap" id="coll-price"></div>
+          <div class="edition-list" id="edition-list" role="radiogroup" aria-label="Elegir edición"></div>
+          <a href="#probador" class="btn btn--ghost">Probárselo virtualmente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Características -->
   <section class="features" id="detalles">
     <div class="container">
@@ -849,6 +1222,136 @@
     </div>
   </section>
 
+  <!-- Le geste: animación de ponerse el calcetín -->
+  <section class="geste" id="geste">
+    <div class="container geste-grid">
+      <div class="geste-text reveal">
+        <p class="eyebrow">Le geste</p>
+        <h2>Ponérselo también<br /><em>es un arte.</em></h2>
+        <p>El protocolo de la Maison exige guantes de algodón negro, cuatro minutos de dedicación y un silencio respetuoso. Nunca de pie. Nunca con prisa. Nunca un lunes.</p>
+        <ol class="geste-steps">
+          <li>Guantes puestos y respiración pausada</li>
+          <li>Puntera alineada con el segundo dedo del pie</li>
+          <li>Ascenso lento, sin pausas ni dudas</li>
+        </ol>
+        <button class="btn btn--light" id="geste-replay" type="button">Volver a ver</button>
+      </div>
+      <div class="geste-art reveal" style="--d:.2s">
+        <svg id="geste-svg" viewBox="0 0 600 720" role="img" aria-label="Ilustración animada: dos manos con guantes negros suben lentamente el calcetín por una pierna">
+          <defs>
+            <radialGradient id="g-spot" cx="52%" cy="46%" r="62%">
+              <stop offset="0" stop-color="#3b342d" />
+              <stop offset=".55" stop-color="#1c1916" />
+              <stop offset="1" stop-color="#0f0e0d" />
+            </radialGradient>
+            <linearGradient id="g-skin" gradientUnits="userSpaceOnUse" x1="195" y1="0" x2="455" y2="0">
+              <stop offset="0" stop-color="#8f6a56" />
+              <stop offset=".22" stop-color="#d9b8a1" />
+              <stop offset=".42" stop-color="#ecd2bf" />
+              <stop offset=".75" stop-color="#c79f87" />
+              <stop offset="1" stop-color="#7f5c4a" />
+            </linearGradient>
+            <linearGradient id="g-sockshade" gradientUnits="userSpaceOnUse" x1="195" y1="0" x2="455" y2="0">
+              <stop offset="0" stop-color="#000" stop-opacity=".34" />
+              <stop offset=".3" stop-color="#000" stop-opacity="0" />
+              <stop offset=".5" stop-color="#fff" stop-opacity=".1" />
+              <stop offset=".72" stop-color="#000" stop-opacity=".08" />
+              <stop offset="1" stop-color="#000" stop-opacity=".4" />
+            </linearGradient>
+            <pattern id="g-knit" width="5" height="6" patternUnits="userSpaceOnUse">
+              <path d="M0 0 L2.5 4.5 L5 0" fill="none" stroke="#000" stroke-opacity=".09" stroke-width=".8" />
+            </pattern>
+            <pattern id="g-rib" width="7" height="10" patternUnits="userSpaceOnUse">
+              <rect width="3" height="10" fill="#000" fill-opacity=".11" />
+            </pattern>
+            <linearGradient id="g-glove" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#454547" />
+              <stop offset=".45" stop-color="#161617" />
+              <stop offset="1" stop-color="#050505" />
+            </linearGradient>
+            <linearGradient id="g-sleeve" x1="1" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#2c2c2e" />
+              <stop offset=".3" stop-color="#151516" />
+              <stop offset=".75" stop-color="#0f0e0d" stop-opacity=".6" />
+              <stop offset="1" stop-color="#0f0e0d" stop-opacity="0" />
+            </linearGradient>
+            <clipPath id="g-legclip">
+              <path d="M232 0 C200 110 212 260 248 380 C262 430 262 480 258 520 C254 552 268 574 292 590 C330 620 380 662 412 690 C424 702 446 700 448 686 C446 668 410 620 370 570 C340 532 322 490 318 440 C314 360 324 220 318 120 C316 70 318 30 320 0 Z" />
+            </clipPath>
+            <g id="g-hand">
+              <path d="M-60 -16 C-110 -110 -150 -210 -196 -318 L-142 -338 C-104 -230 -66 -110 -28 12 Z" fill="url(#g-sleeve)" />
+              <path d="M-46 -8 C-92 -110 -126 -200 -166 -300" fill="none" stroke="#fff" stroke-opacity=".04" stroke-width="3" stroke-linecap="round" />
+              <path d="M-56 -20 C-36 -30 -8 -26 8 -18 C22 -11 30 -1 27 8 C24 16 12 17 3 12 C-14 17 -36 18 -50 14 C-60 8 -62 -12 -56 -20 Z" fill="url(#g-glove)" stroke="#c9a465" stroke-opacity=".55" stroke-width=".8" />
+              <path d="M-32 -25 C-26 -37 -9 -39 -1 -31 C3 -27 -4 -21 -14 -21 Z" fill="url(#g-glove)" stroke="#c9a465" stroke-opacity=".45" stroke-width=".7" />
+              <path d="M4 -15 C14 -9 19 -1 19 7 M-6 -13 C3 -5 8 3 8 12 M-17 -12 C-9 -4 -5 5 -5 13" fill="none" stroke="#c9a465" stroke-opacity=".35" stroke-width=".7" />
+            </g>
+          </defs>
+
+          <rect width="600" height="720" fill="url(#g-spot)" />
+          <ellipse cx="428" cy="706" rx="96" ry="7" fill="#000" fill-opacity=".55" />
+          <path id="g-leg" d="M232 0 C200 110 212 260 248 380 C262 430 262 480 258 520 C254 552 268 574 292 590 C330 620 380 662 412 690 C424 702 446 700 448 686 C446 668 410 620 370 570 C340 532 322 490 318 440 C314 360 324 220 318 120 C316 70 318 30 320 0 Z" fill="url(#g-skin)" />
+
+          <g clip-path="url(#g-legclip)">
+            <g id="g-sock" transform="translate(0 590)">
+              <rect width="600" height="800" class="sk-fill" style="fill: var(--sk-base)" />
+              <rect width="600" height="800" fill="url(#g-knit)" />
+              <rect width="600" height="34" fill="url(#g-rib)" />
+              <rect width="600" height="5" fill="#000" fill-opacity=".16" />
+              <rect y="40" width="600" height="3" class="sk-fill" style="fill: var(--sk-accent)" />
+              <rect y="47" width="600" height="1" class="sk-fill" style="fill: var(--sk-accent)" />
+              <rect width="600" height="800" fill="url(#g-sockshade)" />
+            </g>
+          </g>
+
+          <use href="#g-hand" id="g-hand-l" transform="translate(262 604)" />
+          <use href="#g-hand" id="g-hand-r" transform="translate(372 604) scale(-1 1)" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Probador virtual -->
+  <section class="tryon" id="probador">
+    <div class="container">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Cabine d'essayage</p>
+        <div class="divider"></div>
+        <h2>El probador <em>virtual</em></h2>
+        <p class="lead">Suba una foto suya, o de su pie, y compruebe cómo le sienta cada edición. Todo ocurre en su navegador: la foto no sale de su dispositivo.</p>
+      </div>
+
+      <div class="tryon-grid">
+        <div class="tryon-stage reveal">
+          <canvas id="tryon-canvas" width="1080" height="1350" tabindex="0" aria-label="Probador virtual. Arrastre el calcetín para colocarlo; con el teclado, flechas para mover, más y menos para el tamaño, Q y E para girar."></canvas>
+        </div>
+        <div class="tryon-panel reveal" style="--d:.15s">
+          <div>
+            <input type="file" id="tryon-file" accept="image/*" class="sr-only" />
+            <label for="tryon-file" class="btn file-btn" id="tryon-file-label">Subir una foto</label>
+          </div>
+          <p class="hint">Arrastre el calcetín para colocarlo. En el móvil, gírelo y cambie su tamaño con dos dedos; con ratón, use la rueda o los controles.</p>
+          <div>
+            <div class="ctl-label"><span>Edición</span><output id="tryon-ed">Blanc Original</output></div>
+            <div class="mini-swatches" id="tryon-swatches" role="radiogroup" aria-label="Edición en el probador"></div>
+          </div>
+          <div>
+            <label class="ctl-label" for="t-size"><span>Tamaño</span><output id="t-size-out">100 %</output></label>
+            <input type="range" id="t-size" min="20" max="400" value="100" />
+          </div>
+          <div>
+            <label class="ctl-label" for="t-rot"><span>Giro</span><output id="t-rot-out">0°</output></label>
+            <input type="range" id="t-rot" min="-180" max="180" value="0" />
+          </div>
+          <div class="btn-row">
+            <button class="btn" id="tryon-download" type="button">Descargar imagen</button>
+            <button class="btn btn--ghost" id="tryon-reset" type="button">Restablecer</button>
+          </div>
+          <p class="note-small" id="tryon-msg" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Precio -->
   <section class="price" id="precio">
     <div class="container">
@@ -857,7 +1360,7 @@
         <div class="divider"></div>
         <div class="price-figure">4.900<span>€</span></div>
         <p class="sub">IVA, dignidad y estuche de nogal incluidos.</p>
-        <p class="unit">Precio por unidad · El par, bajo consulta</p>
+        <p class="unit">Edición Blanc Original · Precio por unidad · El par, bajo consulta</p>
       </div>
 
       <div class="included">
@@ -898,6 +1401,83 @@
       </div>
 
       <p class="fine reveal">Maître Anselme teje cinco calcetines al año. Cuando se agoten, la próxima edición está prevista para 2036, salud del maestro mediante.</p>
+    </div>
+  </section>
+
+  <!-- Ritual de cuidado -->
+  <section class="ritual" id="ritual">
+    <div class="container">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Le rituel</p>
+        <div class="divider"></div>
+        <h2>Ritual de <em>cuidado</em></h2>
+        <p class="lead">Un Le Blanc N°1 bien cuidado dura toda una vida. Uno mal cuidado, también, pero no se lo perdonará.</p>
+      </div>
+      <div class="ritual-grid">
+        <article class="rite reveal" style="--d:0s">
+          <h3>Aclimatación</h3>
+          <p>Saque el calcetín de su estuche y deje que se haga a la estancia. No lo mire fijamente: se intimida.</p>
+          <span class="dur">20 minutos</span>
+        </article>
+        <article class="rite reveal" style="--d:.1s">
+          <h3>Lavado</h3>
+          <p>Solo a mano, en agua de manantial alpino a 23,5 °C. Un movimiento circular por minuto, siempre en el sentido de las agujas del reloj.</p>
+          <span class="dur">11 minutos exactos</span>
+        </article>
+        <article class="rite reveal" style="--d:.2s">
+          <h3>El jabón</h3>
+          <p>Una sola gota de jabón de Marsella de 1923. Si no dispone de él, no lave el calcetín. Espere.</p>
+          <span class="dur">1 gota</span>
+        </article>
+        <article class="rite reveal" style="--d:0s">
+          <h3>Secado</h3>
+          <p>En horizontal, sobre lino crudo, a la sombra de un olivo o, en su defecto, de un mayordomo.</p>
+          <span class="dur">36 horas</span>
+        </article>
+        <article class="rite reveal" style="--d:.1s">
+          <h3>Planchado</h3>
+          <p>Está prohibido. Alise el tejido con la palma de la mano mientras le recita a Baudelaire en voz baja.</p>
+          <span class="dur">Nunca</span>
+        </article>
+        <article class="rite reveal" style="--d:.2s">
+          <h3>Reposo</h3>
+          <p>Devuélvalo a su estuche de nogal con la luz apagada. Entre dos usos deben pasar dos días y una reflexión.</p>
+          <span class="dur">48 horas</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificado de autenticidad -->
+  <section class="certificate" id="certificado">
+    <div class="container">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Authenticité</p>
+        <div class="divider"></div>
+        <h2>Su certificado de <em>autenticidad</em></h2>
+        <p class="lead">Cada Le Blanc N°1 viaja con un certificado y un número de serie único. Genere el suyo: Maître Anselme lo firma en espíritu.</p>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-preview reveal">
+          <canvas id="cert-canvas" width="1600" height="1130" role="img" aria-label="Vista previa del certificado de autenticidad"></canvas>
+        </div>
+        <div class="cert-form reveal" style="--d:.15s">
+          <div class="field">
+            <label for="c-name">A nombre de</label>
+            <input id="c-name" type="text" maxlength="48" placeholder="Su nombre, títulos incluidos" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="c-edition">Edición</label>
+            <select id="c-edition"></select>
+          </div>
+          <p class="cert-serial">Número de serie<strong id="c-serial">—</strong></p>
+          <div class="btn-row">
+            <button class="btn" id="cert-download" type="button">Descargar certificado</button>
+            <button class="btn btn--ghost" id="cert-new" type="button">Nuevo número</button>
+          </div>
+          <p class="note-small" id="cert-msg" aria-live="polite">Se descarga como imagen PNG, lista para enmarcar.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -946,6 +1526,63 @@
         <span>Calzetta</span>
         <span>Vogue Pieds</span>
         <span>Monsieur Talon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de espera -->
+  <section class="waitlist" id="espera">
+    <div class="container wait-wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Liste d'attente</p>
+        <div class="divider"></div>
+        <h2>La lista de <em>espera</em></h2>
+        <p class="lead">Las ediciones agotadas se reabren por estricto orden de mérito. Inscribirse no garantiza nada, pero distingue mucho.</p>
+      </div>
+
+      <form class="wait-form reveal" id="wait-form" novalidate>
+        <div class="field">
+          <label for="w-name">Nombre completo</label>
+          <input id="w-name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="w-mail">Correo electrónico</label>
+          <input id="w-mail" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="w-edition">Edición deseada</label>
+          <select id="w-edition"></select>
+        </div>
+        <div class="field">
+          <label for="w-size">Su pie, en su opinión</label>
+          <select id="w-size">
+            <option>Discreto</option>
+            <option>Distinguido</option>
+            <option>Imponente</option>
+            <option>Prefiero no pronunciarme</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="w-ref">¿Quién le recomienda?</label>
+          <input id="w-ref" type="text" placeholder="Un duque, una prima, su conciencia…" />
+        </div>
+        <label class="check full" for="w-ok">
+          <input type="checkbox" id="w-ok" />
+          <span>Acepto esperar con elegancia, sin llamar ni preguntar.</span>
+        </label>
+        <p class="form-error full" id="w-error" aria-live="polite"></p>
+        <div class="full">
+          <button class="btn" type="submit">Inscribirme en la lista</button>
+          <p class="note-small" style="margin-top:16px">Esta página es una ficción: los datos no salen de su navegador.</p>
+        </div>
+      </form>
+
+      <div class="wait-ok" id="wait-ok" hidden>
+        <p class="eyebrow">Inscription confirmée</p>
+        <h3 id="wait-title">Bienvenido/a a la lista</h3>
+        <div class="pos" id="wait-pos">N° 4.812</div>
+        <p id="wait-text"></p>
+        <button class="btn btn--ghost" id="wait-again" type="button">Inscribir a otra persona</button>
       </div>
     </div>
   </section>
@@ -1163,6 +1800,518 @@
       });
     })();
   </script>
+  <!-- Colección, probador, animación del gesto, certificado y lista de espera -->
+  <script>
+    (function () {
+      var EDITIONS = [
+        { id: 'blanc', code: 'BL', name: 'Blanc Original', sub: 'El origen', price: 4900, left: 7,
+          desc: 'El calcetín que lo empezó todo. Un blanco tan sereno que algunos médicos lo recetan contra la ansiedad.',
+          c: { base: '#fbfaf7', light: '#ffffff', dark: '#e3ded5', rib: '#d6d0c5', accent: '#b08d57' } },
+        { id: 'noir', code: 'NA', name: 'Noir Absolu', sub: 'Para pies con un pasado', price: 6200, left: 4,
+          desc: 'Teñido durante una noche sin luna con tinta de calamar de Bretaña. Estiliza el tobillo y oscurece las intenciones.',
+          c: { base: '#1e1e20', light: '#34343a', dark: '#0b0b0c', rib: '#3e3e44', accent: '#c9a465' } },
+        { id: 'or', code: 'OR', name: 'Or Royal', sub: 'Cuando el blanco se queda corto', price: 9800, left: 2,
+          desc: 'Bañado en polvo de oro de 18 quilates por un orfebre jubilado. No se recomienda caminar con él; sí, ser visto.',
+          c: { base: '#d5b067', light: '#f1dba5', dark: '#a47e3c', rib: '#b48d4a', accent: '#fff8e6' } },
+        { id: 'rose', code: 'RP', name: 'Rose Poudré', sub: 'Un atardecer en Biarritz', price: 5400, left: 5,
+          desc: 'Teñido con pétalos de rosa de Grasse recogidos por debutantes. Huele, vagamente, a halago.',
+          c: { base: '#f1d7d3', light: '#fbebe8', dark: '#dbb4ae', rib: '#d8b0aa', accent: '#b08d57' } },
+        { id: 'bleu', code: 'BM', name: 'Bleu Minuit', sub: 'Las 00:00 sobre el Sena', price: 7100, left: 3,
+          desc: 'Su color se fija un único minuto al año, a medianoche, mirando al río. Combina con yates y con melancolía.',
+          c: { base: '#1f2b4e', light: '#33446f', dark: '#111934', rib: '#3a4b7c', accent: '#c9a465' } }
+      ];
+      var current = EDITIONS[0];
+      var root = document.documentElement;
+
+      function fmt(n) { return n.toLocaleString('es-ES', { useGrouping: true }).replace(/,/g, '.') + ' €'; }
+      function byId(id) { return document.getElementById(id); }
+      function hexRgb(h) { var n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+      function mixHex(a, b, t) {
+        var x = hexRgb(a), y = hexRgb(b);
+        return 'rgb(' + [0, 1, 2].map(function (i) { return Math.round(x[i] + (y[i] - x[i]) * t); }).join(',') + ')';
+      }
+      function mixColors(a, b, t) { var o = {}; for (var k in b) o[k] = mixHex(a[k], b[k], t); return o; }
+      function toHexObj(c) {
+        var o = {};
+        for (var k in c) {
+          var v = c[k];
+          if (v.charAt(0) === '#') { o[k] = v; continue; }
+          var m = v.match(/\d+/g);
+          o[k] = '#' + m.slice(0, 3).map(function (d) { return ('0' + (+d).toString(16)).slice(-2); }).join('');
+        }
+        return o;
+      }
+
+      /* ---------- Descargas: capacidad del visor si existe; si no, enlace normal ---------- */
+      function download(blob, filename, msgEl) {
+        function viaLink() {
+          var url = URL.createObjectURL(blob), a = document.createElement('a');
+          a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        }
+        if (window.claude && typeof window.claude.use === 'function') {
+          window.claude.use('downloads').then(function (d) {
+            if (!d) { viaLink(); return; }
+            return d.save({ filename: filename, data: blob }).catch(function (e) {
+              if (msgEl && e && e.code !== 'declined') msgEl.textContent = 'No se ha podido descargar aquí. Abra la página en su navegador para guardar el archivo.';
+            });
+          }, viaLink);
+        } else {
+          viaLink();
+        }
+      }
+
+      /* ---------- Calcetín dibujado en canvas (probador y certificado) ---------- */
+      var SOCK_D = 'M90,30 L210,30 L210,238 C210,268 224,284 250,297 L264,304 C302,323 302,386 254,392 L150,392 C108,392 78,368 80,328 C82,300 90,284 90,258 Z';
+      var SOCK = new Path2D(SOCK_D);
+      function line(g, x1, y1, x2, y2) { g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); }
+      function drawSock(g, c, shadow) {
+        g.save();
+        if (shadow) {
+          g.save(); g.translate(0, 418); g.scale(1, 0.1);
+          var rg = g.createRadialGradient(185, 0, 0, 185, 0, 120); rg.addColorStop(0, 'rgba(0,0,0,.3)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
+          g.fillStyle = rg; g.fillRect(55, -130, 260, 260); g.restore();
+        }
+        var lg = g.createLinearGradient(80, 0, 300, 0);
+        lg.addColorStop(0, c.dark); lg.addColorStop(.35, c.light); lg.addColorStop(.75, c.base); lg.addColorStop(1, c.dark);
+        g.fillStyle = lg; g.fill(SOCK);
+        g.save(); g.clip(SOCK);
+        g.fillStyle = 'rgba(0,0,0,.05)'; g.strokeStyle = c.rib; g.lineWidth = 1;
+        g.beginPath(); g.ellipse(88, 372, 46, 72, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.beginPath(); g.ellipse(300, 350, 56, 70, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.lineWidth = 1.4;
+        for (var x = 98; x <= 202; x += 8) line(g, x, 30, x, 96);
+        g.strokeStyle = c.accent; g.lineWidth = 2; line(g, 80, 100, 220, 100);
+        g.lineWidth = .6; line(g, 80, 105, 220, 105);
+        var vg = g.createLinearGradient(0, 0, 0, 440);
+        vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(.7, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.08)');
+        g.fillStyle = vg; g.fillRect(0, 0, 320, 440);
+        g.restore();
+        g.strokeStyle = c.rib; g.lineWidth = 1.2; g.stroke(SOCK);
+        g.beginPath(); g.moveTo(90, 30); g.bezierCurveTo(120, 40, 180, 40, 210, 30); g.stroke();
+        g.save(); g.translate(150, 168); g.strokeStyle = c.accent; g.lineWidth = 1.3;
+        g.beginPath(); g.arc(0, 0, 19, 0, Math.PI * 2); g.stroke();
+        g.lineWidth = .5; g.beginPath(); g.arc(0, 0, 22.5, 0, Math.PI * 2); g.stroke();
+        g.lineWidth = 1.6; g.lineCap = 'round'; g.lineJoin = 'round';
+        g.beginPath(); g.moveTo(-9, -8); g.lineTo(0, 9); g.lineTo(9, -8); g.stroke();
+        g.restore();
+        g.fillStyle = c.accent; g.font = '11px "Cormorant Garamond", serif'; g.textAlign = 'center';
+        g.fillText('N°1', 150, 215);
+        g.restore();
+      }
+
+      /* ---------- Calcetín SVG de la colección (colores por variables CSS) ---------- */
+      byId('coll-sock').innerHTML =
+        '<svg viewBox="0 0 320 440" role="img" aria-label="Le Blanc N°1 en la edición seleccionada">' +
+        '<defs><linearGradient id="cs-f" x1="0" x2="1" y1="0" y2="0">' +
+        '<stop offset="0" class="sk-stop" style="stop-color:var(--sk-dark)"/><stop offset=".35" class="sk-stop" style="stop-color:var(--sk-light)"/>' +
+        '<stop offset=".75" class="sk-stop" style="stop-color:var(--sk-base)"/><stop offset="1" class="sk-stop" style="stop-color:var(--sk-dark)"/></linearGradient>' +
+        '<linearGradient id="cs-s" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".08"/></linearGradient>' +
+        '<radialGradient id="cs-sh"><stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
+        '<clipPath id="cs-c"><path d="' + SOCK_D + '"/></clipPath></defs>' +
+        '<ellipse cx="185" cy="420" rx="120" ry="12" fill="url(#cs-sh)"/>' +
+        '<path d="' + SOCK_D + '" fill="url(#cs-f)" class="sk-fill" style="stroke:var(--sk-rib)" stroke-width="1.2"/>' +
+        '<g clip-path="url(#cs-c)">' +
+        '<ellipse cx="88" cy="372" rx="46" ry="72" fill="#000" fill-opacity=".05" class="sk-fill" style="stroke:var(--sk-rib)"/>' +
+        '<ellipse cx="300" cy="350" rx="56" ry="70" fill="#000" fill-opacity=".05" class="sk-fill" style="stroke:var(--sk-rib)"/>' +
+        '<g class="sk-fill" style="stroke:var(--sk-rib)" stroke-width="1.4">' +
+        (function () { var s = ''; for (var x = 98; x <= 202; x += 8) s += '<line x1="' + x + '" y1="30" x2="' + x + '" y2="96"/>'; return s; })() +
+        '</g>' +
+        '<line x1="80" y1="100" x2="220" y2="100" class="sk-fill" style="stroke:var(--sk-accent)" stroke-width="2"/>' +
+        '<line x1="80" y1="105" x2="220" y2="105" class="sk-fill" style="stroke:var(--sk-accent)" stroke-width=".6"/>' +
+        '<rect width="320" height="440" fill="url(#cs-s)"/></g>' +
+        '<path d="M90,30 C120,40 180,40 210,30" fill="none" class="sk-fill" style="stroke:var(--sk-rib)" stroke-width="1.2"/>' +
+        '<g transform="translate(150 168)" fill="none" class="sk-fill" style="stroke:var(--sk-accent)" stroke-width="1.3">' +
+        '<circle r="19"/><circle r="22.5" stroke-width=".5"/><path d="M-9,-8 L0,9 L9,-8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>' +
+        '<text x="150" y="215" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="3" class="sk-fill" style="fill:var(--sk-accent)">N°1</text>' +
+        '</svg>';
+
+      /* ---------- Selectores de edición ---------- */
+      var list = byId('edition-list'), swatches = byId('tryon-swatches');
+      EDITIONS.forEach(function (e) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'edition'; b.setAttribute('role', 'radio'); b.dataset.ed = e.id;
+        b.innerHTML = '<span class="dot" style="background:' + e.c.base + '"></span>' +
+          '<span class="n">' + e.name + '<small>' + e.sub + '</small></span><span class="p">' + fmt(e.price) + '</span>';
+        list.appendChild(b);
+
+        var s = document.createElement('button');
+        s.type = 'button'; s.setAttribute('role', 'radio'); s.dataset.ed = e.id;
+        s.setAttribute('aria-label', e.name + ', ' + fmt(e.price)); s.title = e.name;
+        s.style.background = 'linear-gradient(135deg,' + e.c.light + ',' + e.c.base + ' 55%,' + e.c.dark + ')';
+        swatches.appendChild(s);
+
+        ['c-edition', 'w-edition'].forEach(function (id) {
+          var o = document.createElement('option'); o.value = e.id; o.textContent = e.name + ' · ' + fmt(e.price);
+          byId(id).appendChild(o);
+        });
+      });
+
+      document.addEventListener('click', function (ev) {
+        var b = ev.target.closest && ev.target.closest('[data-ed]');
+        if (b) setEdition(b.dataset.ed);
+      });
+      byId('c-edition').addEventListener('change', function () { setEdition(this.value); });
+
+      // Flechas dentro de los grupos de selección
+      [list, swatches].forEach(function (group) {
+        group.addEventListener('keydown', function (ev) {
+          var dir = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[ev.key];
+          if (!dir) return;
+          ev.preventDefault();
+          var i = (EDITIONS.indexOf(current) + dir + EDITIONS.length) % EDITIONS.length;
+          setEdition(EDITIONS[i].id);
+          group.querySelector('[data-ed="' + EDITIONS[i].id + '"]').focus();
+        });
+      });
+
+      function swapText(updates) {
+        var els = updates.map(function (u) { return byId(u[0]); });
+        els.forEach(function (el) { el.classList.add('out'); });
+        setTimeout(function () {
+          updates.forEach(function (u, i) { els[i].innerHTML = u[1]; els[i].classList.remove('out'); });
+        }, 260);
+      }
+
+      function setEdition(id, initial) {
+        var e = EDITIONS.filter(function (x) { return x.id === id; })[0];
+        if (!e || (e === current && !initial)) return;
+        var prev = current; current = e;
+        for (var k in e.c) root.style.setProperty('--sk-' + k, e.c[k]);
+        document.querySelectorAll('[data-ed]').forEach(function (b) {
+          var on = b.dataset.ed === e.id;
+          b.setAttribute('aria-checked', on ? 'true' : 'false');
+          b.tabIndex = on ? 0 : -1;
+        });
+        byId('c-edition').value = e.id;
+        byId('tryon-ed').textContent = e.name;
+        var updates = [
+          ['coll-code', 'Édition ' + e.code],
+          ['coll-stock', 'Quedan ' + e.left + ' piezas'],
+          ['coll-sub', e.sub],
+          ['coll-name', e.name],
+          ['coll-desc', e.desc],
+          ['coll-price', fmt(e.price) + '<small>Por unidad</small>']
+        ];
+        if (initial) updates.forEach(function (u) { byId(u[0]).innerHTML = u[1]; });
+        else swapText(updates);
+        tryon.recolor(prev.c, e.c, initial);
+        cert.draw();
+        window.VC_EDITION = e;
+        document.dispatchEvent(new CustomEvent('vc:edition', { detail: e }));
+      }
+
+      /* ---------- Probador virtual ---------- */
+      var tryon = (function () {
+        var cv = byId('tryon-canvas'), g = cv.getContext('2d'), W = cv.width, H = cv.height;
+        var photo = null, colors = current.c, anim = 0;
+        var DEF = { x: W / 2, y: H * 0.56, s: 1.9, r: -0.25 };
+        var st = Object.assign({}, DEF);
+        var size = byId('t-size'), rot = byId('t-rot'), msg = byId('tryon-msg');
+
+        function render() {
+          g.clearRect(0, 0, W, H);
+          if (photo) {
+            var k = Math.max(W / photo.width, H / photo.height), pw = photo.width * k, ph = photo.height * k;
+            g.drawImage(photo, (W - pw) / 2, (H - ph) / 2, pw, ph);
+          } else {
+            var bg = g.createLinearGradient(0, 0, 0, H);
+            bg.addColorStop(0, '#fdfcf9'); bg.addColorStop(.72, '#f3eee5'); bg.addColorStop(1, '#e9e2d6');
+            g.fillStyle = bg; g.fillRect(0, 0, W, H);
+            g.strokeStyle = 'rgba(176,141,87,.5)'; g.lineWidth = 2; line(g, 0, H * .78, W, H * .78);
+            g.fillStyle = '#b08d57'; g.textAlign = 'center';
+            g.font = '500 22px "Jost", sans-serif'; g.fillText('C A B I N E   D ’ E S S A Y A G E', W / 2, 150);
+            g.fillStyle = '#6f6f6f'; g.font = 'italic 300 46px "Cormorant Garamond", serif';
+            g.fillText('Suba su foto para empezar', W / 2, 220);
+          }
+          g.save();
+          g.translate(st.x, st.y); g.rotate(st.r); g.scale(st.s, st.s); g.translate(-190, -211);
+          drawSock(g, colors, !photo);
+          g.restore();
+          // Firma de la Maison
+          g.textAlign = 'center';
+          g.font = '500 20px "Jost", sans-serif';
+          g.fillStyle = photo ? 'rgba(255,255,255,.92)' : '#8a8a8a';
+          if (photo) { g.shadowColor = 'rgba(0,0,0,.45)'; g.shadowBlur = 8; }
+          g.fillText('L E   B L A N C   N ° 1   ·   M A I S O N   V A U C L A I R', W / 2, H - 46);
+          g.shadowBlur = 0;
+        }
+
+        function sync() {
+          size.value = Math.round(st.s / DEF.s * 100);
+          rot.value = Math.round(((st.r * 180 / Math.PI + 540) % 360) - 180);
+          byId('t-size-out').textContent = size.value + ' %';
+          byId('t-rot-out').textContent = rot.value + '°';
+        }
+
+        function recolor(from, to, instant) {
+          cancelAnimationFrame(anim);
+          if (instant || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { colors = to; render(); return; }
+          var start = performance.now(), base = toHexObj(colors);
+          (function step(now) {
+            var t = Math.min(1, (now - start) / 900), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+            colors = mixColors(base, to, e); render();
+            if (t < 1) anim = requestAnimationFrame(step); else colors = to;
+          })(start);
+        }
+
+        // Gestos: un puntero mueve, dos punteros giran y escalan
+        var pts = new Map(), gest = null;
+        function pos(e) { var r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height }; }
+        function begin() {
+          var arr = Array.from(pts.values());
+          gest = { st: Object.assign({}, st), arr: arr.map(function (p) { return { x: p.x, y: p.y }; }) };
+        }
+        cv.addEventListener('pointerdown', function (e) {
+          cv.setPointerCapture(e.pointerId); pts.set(e.pointerId, pos(e)); begin();
+        });
+        cv.addEventListener('pointermove', function (e) {
+          if (!pts.has(e.pointerId)) return;
+          pts.set(e.pointerId, pos(e));
+          var arr = Array.from(pts.values()), a = gest.arr;
+          if (arr.length === 1 && a.length === 1) {
+            st.x = gest.st.x + arr[0].x - a[0].x; st.y = gest.st.y + arr[0].y - a[0].y;
+          } else if (arr.length >= 2 && a.length >= 2) {
+            var d0 = Math.hypot(a[1].x - a[0].x, a[1].y - a[0].y) || 1, d1 = Math.hypot(arr[1].x - arr[0].x, arr[1].y - arr[0].y);
+            var an0 = Math.atan2(a[1].y - a[0].y, a[1].x - a[0].x), an1 = Math.atan2(arr[1].y - arr[0].y, arr[1].x - arr[0].x);
+            st.s = Math.max(.35, Math.min(8, gest.st.s * d1 / d0));
+            st.r = gest.st.r + an1 - an0;
+            st.x = gest.st.x + (arr[0].x + arr[1].x - a[0].x - a[1].x) / 2;
+            st.y = gest.st.y + (arr[0].y + arr[1].y - a[0].y - a[1].y) / 2;
+          }
+          sync(); render();
+        });
+        function end(e) { pts.delete(e.pointerId); begin(); }
+        cv.addEventListener('pointerup', end);
+        cv.addEventListener('pointercancel', end);
+        cv.addEventListener('wheel', function (e) {
+          e.preventDefault();
+          st.s = Math.max(.35, Math.min(8, st.s * Math.exp(-e.deltaY * 0.0015)));
+          sync(); render();
+        }, { passive: false });
+        cv.addEventListener('keydown', function (e) {
+          var step = e.shiftKey ? 40 : 12, used = true;
+          switch (e.key) {
+            case 'ArrowLeft': st.x -= step; break;
+            case 'ArrowRight': st.x += step; break;
+            case 'ArrowUp': st.y -= step; break;
+            case 'ArrowDown': st.y += step; break;
+            case '+': case '=': st.s = Math.min(8, st.s * 1.08); break;
+            case '-': st.s = Math.max(.35, st.s / 1.08); break;
+            case 'q': case 'Q': st.r -= 0.08; break;
+            case 'e': case 'E': st.r += 0.08; break;
+            default: used = false;
+          }
+          if (used) { e.preventDefault(); sync(); render(); }
+        });
+
+        size.addEventListener('input', function () { st.s = DEF.s * size.value / 100; sync(); render(); });
+        rot.addEventListener('input', function () { st.r = rot.value * Math.PI / 180; sync(); render(); });
+        byId('tryon-reset').addEventListener('click', function () { st = Object.assign({}, DEF); if (photo) st.s = 1.4; sync(); render(); });
+
+        byId('tryon-file').addEventListener('change', function () {
+          var f = this.files && this.files[0];
+          if (!f) return;
+          if (!/^image\//.test(f.type)) { msg.textContent = 'Ese archivo no es una imagen. Elija una foto JPG, PNG o similar.'; return; }
+          var url = URL.createObjectURL(f), img = new Image();
+          img.onload = function () {
+            photo = img; st = Object.assign({}, DEF, { s: 1.4 });
+            byId('tryon-file-label').textContent = 'Cambiar la foto';
+            msg.textContent = 'Foto cargada. Coloque el calcetín donde le favorezca.';
+            sync(); render();
+          };
+          img.onerror = function () { msg.textContent = 'No se ha podido abrir esa imagen. Pruebe con otra foto.'; };
+          img.src = url;
+        });
+
+        byId('tryon-download').addEventListener('click', function () {
+          render();
+          cv.toBlob(function (b) { if (b) download(b, 'le-blanc-n1-probador.png', msg); }, 'image/png');
+        });
+
+        sync();
+        return { render: render, recolor: recolor };
+      })();
+
+      /* ---------- Certificado de autenticidad ---------- */
+      var cert = (function () {
+        var cv = byId('cert-canvas'), g = cv.getContext('2d'), W = cv.width, H = cv.height;
+        var serial = '', num = 0;
+        var CH = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        function newSerial() {
+          var s = ''; for (var i = 0; i < 4; i++) s += CH.charAt(Math.floor(Math.random() * CH.length));
+          num = 1 + Math.floor(Math.random() * 50);
+          serial = s;
+        }
+        function serialText() { return 'LB1-' + current.code + '-' + serial + ' · ' + ('0' + num).slice(-2) + '/50'; }
+        function spaced(t) { return t.split('').join(String.fromCharCode(8202)); }
+        function wrap(text, x, y, maxW, lh) {
+          var words = text.split(' '), lineTxt = '';
+          words.forEach(function (w) {
+            var test = lineTxt ? lineTxt + ' ' + w : w;
+            if (g.measureText(test).width > maxW && lineTxt) { g.fillText(lineTxt, x, y); lineTxt = w; y += lh; }
+            else lineTxt = test;
+          });
+          g.fillText(lineTxt, x, y);
+        }
+        function draw() {
+          var gold = '#b08d57', ink = '#1a1814';
+          g.fillStyle = '#fbf9f4'; g.fillRect(0, 0, W, H);
+          g.strokeStyle = 'rgba(176,141,87,.07)'; g.lineWidth = 1;
+          for (var y = 0; y < H; y += 6) line(g, 0, y, W, y);
+          g.strokeStyle = gold; g.lineWidth = 3; g.strokeRect(40, 40, W - 80, H - 80);
+          g.lineWidth = 1; g.strokeRect(58, 58, W - 116, H - 116);
+          [[58, 58], [W - 58, 58], [58, H - 58], [W - 58, H - 58]].forEach(function (p) {
+            g.save(); g.translate(p[0], p[1]); g.rotate(Math.PI / 4); g.fillStyle = gold; g.fillRect(-9, -9, 18, 18);
+            g.fillStyle = '#fbf9f4'; g.fillRect(-4, -4, 8, 8); g.restore();
+          });
+
+          g.textAlign = 'center'; g.fillStyle = ink;
+          g.font = '500 30px "Cormorant Garamond", serif'; g.fillText(spaced('MAISON  VAUCLAIR'), W / 2, 150);
+          g.fillStyle = gold; g.font = '400 15px "Jost", sans-serif'; g.fillText(spaced('PARIS  ·  DEPUIS 1887'), W / 2, 180);
+          g.fillStyle = ink; g.font = 'italic 300 92px "Cormorant Garamond", serif'; g.fillText('Certificat d’authenticité', W / 2, 300);
+          g.fillStyle = '#7a7368'; g.font = '400 17px "Jost", sans-serif'; g.fillText(spaced('CERTIFICADO DE AUTENTICIDAD'), W / 2, 345);
+          g.strokeStyle = gold; g.lineWidth = 1.5; line(g, W / 2 - 50, 380, W / 2 + 50, 380);
+
+          g.fillStyle = '#3a362f'; g.font = '300 31px "Cormorant Garamond", serif';
+          wrap('Se certifica que el presente calcetín Le Blanc N°1, edición «' + current.name + '», ha sido recogido a mano al amanecer, hilado en silencio absoluto, tejido en 412 horas por Maître Anselme y reposado cuarenta días escuchando a Debussy, conforme al protocolo de la Maison.', W / 2, 445, 1080, 46);
+
+          var owner = (byId('c-name').value || '').trim() || 'Por designar';
+          var date = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+          [['NÚMERO DE SERIE', serialText(), 380], ['PROPIETARIO/A', owner, W / 2], ['FECHA', date, W - 380]].forEach(function (f) {
+            g.fillStyle = gold; g.font = '500 14px "Jost", sans-serif'; g.fillText(spaced(f[0]), f[2], 650);
+            g.fillStyle = ink; g.font = '400 32px "Cormorant Garamond", serif';
+            var t = f[1]; while (g.measureText(t).width > 400 && t.length > 4) t = t.slice(0, -2);
+            if (t !== f[1]) t = t.trim() + '…';
+            g.fillText(t, f[2], 698);
+            g.strokeStyle = 'rgba(176,141,87,.5)'; g.lineWidth = 1; line(g, f[2] - 170, 718, f[2] + 170, 718);
+          });
+
+          // Firma
+          g.fillStyle = ink; g.font = 'italic 400 54px "Cormorant Garamond", serif'; g.fillText('Anselme Vauclair', 400, 900);
+          g.strokeStyle = ink; g.lineWidth = 1; line(g, 250, 920, 550, 920);
+          g.fillStyle = '#7a7368'; g.font = '400 13px "Jost", sans-serif'; g.fillText(spaced('MAÎTRE ARTISAN'), 400, 950);
+
+          // Calcetín de la edición
+          g.save(); g.translate(W / 2 - 48, 790); g.scale(.42, .42); g.translate(-80, 0); drawSock(g, current.c, true); g.restore();
+
+          // Sello
+          g.save(); g.translate(W - 400, 890);
+          var sg = g.createRadialGradient(-20, -20, 10, 0, 0, 96);
+          sg.addColorStop(0, '#e6cc96'); sg.addColorStop(.6, '#b8924f'); sg.addColorStop(1, '#8a6a37');
+          g.fillStyle = sg; g.beginPath(); g.arc(0, 0, 92, 0, Math.PI * 2); g.fill();
+          g.strokeStyle = 'rgba(255,248,230,.75)'; g.lineWidth = 1.5;
+          g.beginPath(); g.arc(0, 0, 80, 0, Math.PI * 2); g.stroke();
+          g.beginPath(); g.arc(0, 0, 52, 0, Math.PI * 2); g.stroke();
+          g.fillStyle = '#fff8e6'; g.font = '500 14px "Jost", sans-serif';
+          var ring = 'AUTHENTIQUE · MAISON VAUCLAIR · LE BLANC N°1 · ';
+          for (var i = 0; i < ring.length; i++) {
+            g.save(); g.rotate(i / ring.length * Math.PI * 2); g.fillText(ring.charAt(i), 0, -60); g.restore();
+          }
+          g.strokeStyle = '#fff8e6'; g.lineWidth = 4; g.lineCap = 'round'; g.lineJoin = 'round';
+          g.beginPath(); g.moveTo(-20, -18); g.lineTo(0, 22); g.lineTo(20, -18); g.stroke();
+          g.restore();
+
+          byId('c-serial').textContent = serialText();
+        }
+        newSerial();
+        byId('c-name').addEventListener('input', draw);
+        byId('cert-new').addEventListener('click', function () { newSerial(); draw(); });
+        byId('cert-download').addEventListener('click', function () {
+          draw();
+          cv.toBlob(function (b) { if (b) download(b, 'certificado-le-blanc-' + current.code + '-' + serial + '.png', byId('cert-msg')); }, 'image/png');
+        });
+        return { draw: draw };
+      })();
+
+      /* ---------- Le geste: ponerse el calcetín ---------- */
+      (function () {
+        var svg = byId('geste-svg'), leg = byId('g-leg'), sock = byId('g-sock');
+        var hl = byId('g-hand-l'), hr = byId('g-hand-r');
+        var len = leg.getTotalLength(), L = [], R = [];
+        for (var i = 0; i <= 900; i++) {
+          var p = leg.getPointAtLength(len * i / 900);
+          for (var d = -2; d <= 2; d++) {
+            var y = Math.round(p.y) + d;
+            if (y < 0 || y > 720) continue;
+            L[y] = L[y] === undefined ? p.x : Math.min(L[y], p.x);
+            R[y] = R[y] === undefined ? p.x : Math.max(R[y], p.x);
+          }
+        }
+        var START = 592, END = 150, playing = 0, played = false;
+        function set(p) {
+          var y = START - (START - END) * p;
+          var hy = Math.round(y + 14), yy = Math.max(0, Math.min(720, hy));
+          while (L[yy] === undefined && yy > 0) yy--;
+          sock.setAttribute('transform', 'translate(0 ' + y.toFixed(1) + ')');
+          hl.setAttribute('transform', 'translate(' + (L[yy] + 5).toFixed(1) + ' ' + hy + ')');
+          hr.setAttribute('transform', 'translate(' + (R[yy] - 5).toFixed(1) + ' ' + hy + ') scale(-1 1)');
+        }
+        function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+        function play() {
+          cancelAnimationFrame(playing);
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { set(1); return; }
+          var start = performance.now(), DUR = 5600;
+          set(0);
+          (function step(now) {
+            var t = Math.min(1, (now - start) / DUR);
+            // Tres tirones suaves dentro de un ascenso continuo
+            var p = ease(t) + Math.sin(t * Math.PI * 6) * 0.012 * (1 - t);
+            set(Math.max(0, Math.min(1, p)));
+            if (t < 1) playing = requestAnimationFrame(step);
+          })(start);
+        }
+        set(0);
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (en, obs) {
+            if (en[0].isIntersecting && !played) { played = true; setTimeout(play, 500); obs.disconnect(); }
+          }, { threshold: 0.45 }).observe(svg);
+        } else { set(1); }
+        byId('geste-replay').addEventListener('click', play);
+      })();
+
+      /* ---------- Lista de espera ---------- */
+      (function () {
+        var form = byId('wait-form'), ok = byId('wait-ok'), err = byId('w-error');
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = byId('w-name').value.trim(), mail = byId('w-mail').value.trim();
+          if (!name) { err.textContent = 'Indique su nombre: la Maison no inscribe a desconocidos.'; byId('w-name').focus(); return; }
+          if (!/^\S+@\S+\.\S+$/.test(mail)) { err.textContent = 'Revise su correo electrónico; parece incompleto.'; byId('w-mail').focus(); return; }
+          if (!byId('w-ok').checked) { err.textContent = 'Debe aceptar esperar con elegancia. Es innegociable.'; byId('w-ok').focus(); return; }
+          err.textContent = '';
+          var ed = EDITIONS.filter(function (x) { return x.id === byId('w-edition').value; })[0];
+          var pos = 1200 + Math.floor(Math.random() * 7800);
+          var years = 3 + Math.floor(Math.random() * 12), months = Math.floor(Math.random() * 12);
+          byId('wait-title').textContent = 'Bienvenido/a, ' + name.split(/\s+/)[0];
+          byId('wait-pos').textContent = 'N° ' + pos.toLocaleString('es-ES').replace(/,/g, '.');
+          byId('wait-text').textContent = 'Queda inscrito/a en la lista de espera de ' + ed.name + '. Tiempo estimado: ' + years + ' años y ' + months + ' meses. Le escribiremos solo si es estrictamente necesario.';
+          form.hidden = true; ok.hidden = false;
+          ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+        byId('wait-again').addEventListener('click', function () {
+          form.reset(); byId('w-edition').value = current.id; ok.hidden = true; form.hidden = false; byId('w-name').focus();
+        });
+      })();
+
+      setEdition('blanc', true);
+      byId('w-edition').value = 'blanc';
+
+      // Redibujar los lienzos cuando las tipografías estén listas
+      if (document.fonts && document.fonts.load) {
+        Promise.all([
+          document.fonts.load('italic 300 40px "Cormorant Garamond"'),
+          document.fonts.load('italic 400 40px "Cormorant Garamond"'),
+          document.fonts.load('300 40px "Cormorant Garamond"'),
+          document.fonts.load('400 40px "Cormorant Garamond"'),
+          document.fonts.load('500 40px "Cormorant Garamond"'),
+          document.fonts.load('400 20px "Jost"'),
+          document.fonts.load('500 20px "Jost"')
+        ]).then(function () { tryon.render(); cert.draw(); }, function () {});
+      }
+    })();
+  </script>
+
   <!-- Calcetín en 3D: geometría, textura e iluminación generadas en WebGL, sin librerías -->
   <script>
     (function () {
@@ -1337,11 +2486,12 @@
         'varying vec3 vN; varying vec3 vW; varying vec2 vUv;' +
         'void main(){ vec4 w = uModel * vec4(aPos, 1.0); vW = w.xyz; vN = (uModel * vec4(aNor, 0.0)).xyz; vUv = aUv; gl_Position = uViewProj * w; }';
       var FS = 'precision mediump float;' +
-        'uniform sampler2D uTex; uniform vec3 uCam;' +
+        'uniform sampler2D uTex; uniform vec3 uCam; uniform vec3 uTint;' +
         'varying vec3 vN; varying vec3 vW; varying vec2 vUv;' +
         'void main(){' +
         '  vec3 n = normalize(vN); vec3 v = normalize(uCam - vW);' +
         '  vec3 alb = texture2D(uTex, vUv).rgb;' +
+        '  float gold0 = smoothstep(0.1, 0.22, alb.r - alb.b); alb = mix(alb * uTint, alb, gold0);' +
         '  float inside = 0.0; if (dot(n, v) < 0.0) { n = -n; inside = 1.0; }' +
         '  vec3 L1 = normalize(vec3(0.55, 0.7, 0.6)); vec3 L2 = normalize(vec3(-0.85, 0.15, 0.35));' +
         '  float d1 = max(0.0, (dot(n, L1) + 0.2) / 1.2); float d2 = max(0.0, dot(n, L2));' +
@@ -1389,6 +2539,17 @@
 
       var uModel = gl.getUniformLocation(prog, 'uModel'), uViewProj = gl.getUniformLocation(prog, 'uViewProj'), uCam = gl.getUniformLocation(prog, 'uCam');
       gl.uniform1i(gl.getUniformLocation(prog, 'uTex'), 0);
+
+      // Color de la edición elegida: se tiñe el tejido y se respeta el oro
+      var uTint = gl.getUniformLocation(prog, 'uTint');
+      var tint = [1, 1, 1], tintTo = [1, 1, 1];
+      function tintFor(e) {
+        if (!e || e.id === 'blanc') return [1, 1, 1];
+        var n = parseInt(e.c.base.slice(1), 16);
+        return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+      }
+      gl.uniform3fv(uTint, tint);
+      document.addEventListener('vc:edition', function (ev) { tintTo = tintFor(ev.detail); dirty = true; start(); });
       gl.enable(gl.DEPTH_TEST);
       gl.clearColor(0, 0, 0, 0);
 
@@ -1449,6 +2610,12 @@
           yaw += vel + (reduced ? 0 : 0.32 * dt);
           vel *= 0.94;
         }
+        var tinting = false;
+        for (var ti = 0; ti < 3; ti++) {
+          var dd = tintTo[ti] - tint[ti];
+          if (Math.abs(dd) > 0.002) { tint[ti] += dd * (reduced ? 1 : Math.min(1, dt * 3.2)); tinting = true; } else tint[ti] = tintTo[ti];
+        }
+        if (tinting) { gl.uniform3fv(uTint, tint); dirty = true; }
         var bob = reduced ? 0 : Math.sin(now / 1000 * 0.9) * 0.06;
         var sway = reduced ? 0 : Math.sin(now / 1000 * 0.6) * 0.035;
         if (!reduced || dirty || dragging || Math.abs(vel) > 1e-4) {
